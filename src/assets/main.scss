@@ -1,10 +1,12 @@
 @import './base.scss';
+@import '../scss/abstracts/variables';
 
 #app {
   display: flex;
   flex-direction: column;
   margin: 0;
   font-weight: normal;
+  background-color: $color-bg;
 }
 
 a,

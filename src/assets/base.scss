@@ -73,7 +73,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Inter,
+    'DM Sans',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -89,4 +89,5 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
