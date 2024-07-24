@@ -1,31 +1,44 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import AppHeader from './Header.vue';
-import AppListFunds from './ListFunds.vue'
-//import SelectButton from 'primevue/selectbutton';
-/*
-import SelectButton from 'primevue/selectbutton';
+import AppListFunds from './ListFunds.vue';
+import AppPagination from '../../components/Pagination.vue';
+import axios from 'axios';
 
-const value = ref('');
-const options = ref(['teste 1', 'teste 2']);
-*/
 const selectedButton = ref('Todos');
+let Funds = ref([]);
+const Token = import.meta.env.VITE_API_KEY;
+
+const LimitPage = "20";
+let currentPage = ref(1);
+
+const Endpoint = 'quote/list';
+
+onMounted(() => {
+  fetchFunds();
+});
+
+function fetchFunds() {
+  axios.get(`https://brapi.dev/api/${Endpoint}?token=${Token}&limit=${LimitPage}&page=${currentPage.value}`)
+    .then(response => {
+      Funds.value = response.data.stocks;
+      currentPage.value = response.data.currentPage;
+    });
+}
 
 function selectView(buttonName) {
   selectedButton.value = buttonName;
 }
-</script>
 
+function handlePageChange(page) {
+  currentPage.value = page;
+  fetchFunds();
+}
+</script>
 
 <template>
   <AppHeader />
   <main class="main-wrapper">
-    <!--
-      <SelectButton v-model="value" :options="options" aria-labelledby="basic" />
-     -->
-      
-   
-
     <section class="section-informations">
       <div class="title-box">
         <h2>Explore Informações Exclusivas do Mercado de Ações</h2>
@@ -34,36 +47,30 @@ function selectView(buttonName) {
 
       <div class="select-button__container">
         <button 
-        @click="selectView('Todos')" 
-        :class="{ 'active': selectedButton === 'Todos' }"
+          @click="selectView('Todos')" 
+          :class="{ 'active': selectedButton === 'Todos' }"
         >Todos</button>
         <button 
-        @click="selectView('FIIs')" 
-        :class="{ 'active': selectedButton === 'FIIs' }"
+          @click="selectView('FIIs')" 
+          :class="{ 'active': selectedButton === 'FIIs' }"
         >FIIs</button>
         <button
-        @click="selectView('Ações')"
-        :class="{ active: selectedButton === 'Ações' }"
+          @click="selectView('Ações')"
+          :class="{ active: selectedButton === 'Ações' }"
         >Ações</button>
         <button
-        @click="selectView('Cotações')"
-        :class="{ active: selectedButton === 'Cotações' }"
+          @click="selectView('Cotações')"
+          :class="{ active: selectedButton === 'Cotações' }"
         >Cotações</button>
       </div>
 
       <AppListFunds :funds="Funds"/>
-     
+      <AppPagination :currentPage="currentPage" :totalPages="LimitPage" @page-changed="handlePageChange"/>
     </section>
-    
   </main>
 </template>
 
-<script>
-  const Funds = ['wd3d', 'ecec', 'w222']
-</script>
-
 <style lang="scss">
-
 @import '../../scss/abstracts/variables';
 
 .main-wrapper {
@@ -78,7 +85,7 @@ function selectView(buttonName) {
     gap: 1rem;
     width: 50%;
     background-color: #1a203b;
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: 50rem;
     z-index: 3;
 
@@ -93,7 +100,7 @@ function selectView(buttonName) {
       color: white;
       cursor: pointer;
       transition: 300ms ease;
-      
+
       &.active {
         background: $color-highlight;
         color: $color-bg;
@@ -130,9 +137,4 @@ function selectView(buttonName) {
     }
   }
 }
-
 </style>
-
-
-
-
