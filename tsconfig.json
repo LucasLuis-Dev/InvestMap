@@ -12,7 +12,9 @@
     }
   ],
   "compilerOptions": {
-    "module": "NodeNext"
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
   },
   "noImplicitAny": false,
   "allowJs": true,

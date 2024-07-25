@@ -19,11 +19,6 @@
     </header>
 </template>
 
-<script>
-    export default {
-        name: 'AppHeader'
-    }
-</script>
 
 <style lang="scss">
 
@@ -42,9 +37,9 @@
         width: 100%;
         height: 120%;
     }
-    
 
-    header {
+    @media screen and (min-width: 1280px) {
+        header {
         display: grid;
         grid-template-columns: 2fr 1fr;
         padding-left: 8%;
@@ -62,8 +57,8 @@
             &-title {
                 font-family: 'DM Sans';
                 font-weight: 700;
-                font-size: 5rem;
-                line-height: 6rem;
+                font-size: 4.5rem;
+                line-height: 5.5rem;
 
                 & span {
                     color: #FFD630;
@@ -73,4 +68,14 @@
 
         }
     }
+    }
+   
 </style>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    name: 'AppHeader',
+});
+</script>

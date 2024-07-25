@@ -64,7 +64,7 @@ export default defineComponent({
 
 .list-funds__container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   align-items: center;
   padding: 2% 8%;
   justify-content: space-between;
@@ -89,8 +89,8 @@ export default defineComponent({
 
       & img {
         border-radius: 1rem;
-        width: 50px;
-        height: 50px;
+        width: 6rem;
+        height: 100%;
         object-fit: cover;
       }
 

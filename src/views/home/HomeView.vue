@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import AppHeader from './Header.vue';
+import AppHeader from './TheHeader.vue'
 import AppListFunds from './ListFunds.vue';
 import AppPagination from '../../components/Pagination.vue';
 import axios from 'axios';
@@ -9,7 +9,7 @@ const selectedButton = ref('Todos');
 let Funds = ref([]);
 const Token = import.meta.env.VITE_API_KEY;
 
-const LimitPage = "20";
+const LimitPage: number = 20;
 let currentPage = ref(1);
 
 const Endpoint = 'quote/list';
@@ -26,11 +26,11 @@ function fetchFunds() {
     });
 }
 
-function selectView(buttonName) {
+function selectView(buttonName: string) {
   selectedButton.value = buttonName;
 }
 
-function handlePageChange(page) {
+function handlePageChange(page: number) {
   currentPage.value = page;
   fetchFunds();
 }
