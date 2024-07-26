@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import AppNavbar from '../../layout/navbar/Navbar.vue'
 import AppHeader from './TheHeader.vue'
 import AppListFunds from './ListFunds.vue';
 import AppPagination from '../../components/Pagination.vue';
@@ -12,6 +13,8 @@ const Token = import.meta.env.VITE_API_KEY;
 const LimitPage: number = 20;
 let currentPage = ref(1);
 
+let search: string = ref('')
+
 const Endpoint = 'quote/list';
 
 onMounted(() => {
@@ -23,11 +26,35 @@ function fetchFunds() {
     .then(response => {
       Funds.value = response.data.stocks;
       currentPage.value = response.data.currentPage;
-    });
+  });
+}
+
+function getFundsByCategory(category: string) {
+  axios.get(`https://brapi.dev/api/${Endpoint}?token=${Token}&limit=${LimitPage}&page=${currentPage.value}&type=${category}`)
+    .then(response => {
+      console.log(response)
+      Funds.value = response.data.stocks;
+      currentPage.value = response.data.currentPage;
+  });
 }
 
 function selectView(buttonName: string) {
   selectedButton.value = buttonName;
+
+  if (buttonName == 'default') {
+    fetchFunds()
+  } else {
+    getFundsByCategory(buttonName)
+  }
+}
+
+function searchBy(search: string) {
+  axios.get(`https://brapi.dev/api/${Endpoint}?token=${Token}&limit=${LimitPage}&page=${currentPage.value}&search=${search}`)
+    .then(response => {
+      console.log(response)
+      Funds.value = response.data.stocks;
+      currentPage.value = response.data.currentPage;
+  });
 }
 
 function handlePageChange(page: number) {
@@ -37,6 +64,7 @@ function handlePageChange(page: number) {
 </script>
 
 <template>
+  <AppNavbar @search-event="searchBy" />
   <AppHeader />
   <main class="main-wrapper">
     <section class="section-informations">
@@ -47,25 +75,25 @@ function handlePageChange(page: number) {
 
       <div class="select-button__container">
         <button 
-          @click="selectView('Todos')" 
+          @click="selectView('default')" 
           :class="{ 'active': selectedButton === 'Todos' }"
         >Todos</button>
         <button 
-          @click="selectView('FIIs')" 
+          @click="selectView('fund')" 
           :class="{ 'active': selectedButton === 'FIIs' }"
         >FIIs</button>
         <button
-          @click="selectView('Ações')"
+          @click="selectView('stock')"
           :class="{ active: selectedButton === 'Ações' }"
         >Ações</button>
         <button
-          @click="selectView('Cotações')"
+          @click="selectView('bdr')"
           :class="{ active: selectedButton === 'Cotações' }"
-        >Cotações</button>
+        >BDRs</button>
       </div>
 
       <AppListFunds :funds="Funds"/>
-      <AppPagination :currentPage="currentPage" :totalPages="LimitPage" @page-changed="handlePageChange"/>
+      <AppPagination v-if="Funds.length > 9" :currentPage="currentPage" :totalPages="LimitPage" @page-changed="handlePageChange"/>
     </section>
   </main>
 </template>

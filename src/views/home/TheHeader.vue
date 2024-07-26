@@ -55,7 +55,7 @@
             gap: 1rem;
 
             &-title {
-                font-family: 'DM Sans';
+                font-family: 'DM Sans', Arial, Helvetica, sans-serif;
                 font-weight: 700;
                 font-size: 4.5rem;
                 line-height: 5.5rem;

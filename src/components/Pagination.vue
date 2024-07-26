@@ -75,6 +75,10 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   list-style: none;
+  background-color:#1a203b;
+  padding: .5rem;
+  gap: 1rem;
+  border-radius: 50rem;
   width: 50%;
 
   & li {
@@ -82,12 +86,13 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.251);
-    width: 4rem;
+    width: 100%;
     height: 4rem;
     text-align: center;
-    border-radius: 1rem;
+    border-radius: 50rem;
     cursor: pointer;
     font-weight: 500;
+    transition: all 200ms;
 
     &.current-page {
       background-color: $color-highlight;

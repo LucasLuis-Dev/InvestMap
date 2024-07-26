@@ -1,8 +1,32 @@
+<script lang="ts">
+
+import { defineComponent, ref } from 'vue';
+
+
+
+export default defineComponent({
+  name: 'AppNavbar',
+  emits: ['search-event'],
+  setup(_,{emit }) {
+    let search: string = ref('');
+
+    function sendSearch() {
+      emit('search-event', search.value)
+    }
+
+    return {
+      search,
+      sendSearch
+    }
+  }
+});
+</script>
+
 <template>
     <nav>
         <img alt="InvestMap logo" class="logo" src="@/assets/images/logo.png" />
 
-        <input type="text" class="input-search" placeholder="Pesquise por um Fundo">
+        <input type="text" v-model="search" @keyup.enter="sendSearch()" class="input-search" placeholder="Pesquise por um Fundo">
 
         <ul class="navbar-list">
             <li><a class="navbar-list-link" href="#acoes">Ações</a></li>
@@ -34,13 +58,20 @@ nav {
     border-radius: 5rem;
     border: none;
     padding: 1rem;
-    padding-left: 4rem;
+    padding-left: 5rem;
     background-image: url('../../assets/images/magnifying-glass-solid.svg');
     background-color: rgba(255, 255, 255, 0.179);
     background-repeat: no-repeat;
     background-size: 8%;
     background-position-y: center;
     background-position-x: 6%;
+    color: white;
+    font-size: 1.7rem;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
 
   }
 
@@ -59,11 +90,4 @@ nav {
 }
 </style>
 
-<script lang="ts">
 
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'AppNavbar',
-});
-</script>
