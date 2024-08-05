@@ -94,6 +94,10 @@ export default defineComponent({
     font-weight: 500;
     transition: all 200ms;
 
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.427);
+      }
+
     &.current-page {
       background-color: $color-highlight;
       color: $color-bg;

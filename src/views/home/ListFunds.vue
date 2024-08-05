@@ -1,5 +1,6 @@
 <template>
-  <ul class="list-funds__container">
+  <div class="loader" v-if="funds.length == 0"></div>
+  <ul class="list-funds__container" v-else>
     <li v-for="fund in funds" :key="fund.stock" class="fund-item">
       <div class="fund-item-header">
         <img :src="fund.logo" alt="Logo" />
@@ -59,8 +60,29 @@ export default defineComponent({
 });
 </script>
 
+
+
 <style lang="scss">
 @import '../../scss/abstracts/variables';
+@import '../../scss/base/animations';
+
+.loader {
+  width: 45px;
+  aspect-ratio: 1;
+  --c:no-repeat linear-gradient(#000 0 0);
+  background: var(--c), var(--c), var(--c);
+  animation: 
+    l15-1 1s infinite,
+    l15-2 1s infinite;
+}
+@keyframes l15-1 {
+ 0%,100% {background-size:20% 100%}
+ 33%,66% {background-size:20% 40%}
+}
+@keyframes l15-2 {
+ 0%,33%   {background-position: 0    0,50% 100%,100% 100%}
+ 66%,100% {background-position: 100% 0,0   100%,50%  100%}
+}
 
 .list-funds__container {
   display: grid;
@@ -77,13 +99,14 @@ export default defineComponent({
     flex-direction: column;
     width: 100%;
     gap: 1rem;
-    padding: 2rem;
+    padding: 2rem 3rem;
     border-radius: 1rem;
     background: $color-bg-2;
+    animation: show-animation .5s ease-in-out;
 
     &-header {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       gap: 1rem;
 
@@ -103,13 +126,14 @@ export default defineComponent({
           font-weight: 700;
           background: rgba(255, 255, 255, 0.251);
           width: fit-content;
-          padding: 0.2rem 1rem;
-          border-radius: 1rem;
+          padding: .1rem 1rem;
+          border-radius: .5rem;
         }
 
         & p {
           text-align: left;
           width: max-content;
+          word-break: break-word;
         }
       }
     }
@@ -118,21 +142,24 @@ export default defineComponent({
       display: flex;
       gap: 1rem;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
       & .fund-price {
         color: $color-highlight;
         background-color: rgba(255, 255, 255, 0.142);
         padding: 0.6rem;
         border-radius: 1rem;
+        width: 100%;
       }
 
       &-variation {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.3rem;
         padding: 0.5rem;
         border-radius: 1rem;
+        width: 100%;
 
         &.up-variation {
           color: #00e509;

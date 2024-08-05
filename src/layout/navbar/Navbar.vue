@@ -1,6 +1,7 @@
 <script lang="ts">
 
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, type Ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 
 
@@ -8,10 +9,12 @@ export default defineComponent({
   name: 'AppNavbar',
   emits: ['search-event'],
   setup(_,{emit }) {
-    let search: string = ref('');
+    let search: Ref<string> = ref('');
+    let router = useRouter();
 
     function sendSearch() {
       emit('search-event', search.value)
+      router.push({ path: '/search', query: { q: search.value } });
     }
 
     return {

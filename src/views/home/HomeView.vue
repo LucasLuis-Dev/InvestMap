@@ -13,8 +13,6 @@ const Token = import.meta.env.VITE_API_KEY;
 const LimitPage: number = 20;
 let currentPage = ref(1);
 
-let search: string = ref('')
-
 const Endpoint = 'quote/list';
 
 onMounted(() => {
@@ -76,19 +74,19 @@ function handlePageChange(page: number) {
       <div class="select-button__container">
         <button 
           @click="selectView('default')" 
-          :class="{ 'active': selectedButton === 'Todos' }"
+          :class="{ 'active': selectedButton === 'default' }"
         >Todos</button>
         <button 
           @click="selectView('fund')" 
-          :class="{ 'active': selectedButton === 'FIIs' }"
+          :class="{ 'active': selectedButton === 'fund' }"
         >FIIs</button>
         <button
           @click="selectView('stock')"
-          :class="{ active: selectedButton === 'Ações' }"
+          :class="{ active: selectedButton === 'stock' }"
         >Ações</button>
         <button
           @click="selectView('bdr')"
-          :class="{ active: selectedButton === 'Cotações' }"
+          :class="{ active: selectedButton === 'bdr' }"
         >BDRs</button>
       </div>
 
@@ -128,6 +126,10 @@ function handlePageChange(page: number) {
       color: white;
       cursor: pointer;
       transition: 300ms ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.427);
+      }
 
       &.active {
         background: $color-highlight;
