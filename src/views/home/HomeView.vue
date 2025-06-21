@@ -6,7 +6,7 @@ import AppListFunds from './ListFunds.vue';
 import AppPagination from '../../components/Pagination.vue';
 import axios from 'axios';
 
-const selectedButton = ref('Todos');
+const selectedButton = ref('default');
 let Funds = ref([]);
 const Token = import.meta.env.VITE_API_KEY;
 
@@ -30,7 +30,6 @@ function fetchFunds() {
 function getFundsByCategory(category: string) {
   axios.get(`https://brapi.dev/api/${Endpoint}?token=${Token}&limit=${LimitPage}&page=${currentPage.value}&type=${category}`)
     .then(response => {
-      console.log(response)
       Funds.value = response.data.stocks;
       currentPage.value = response.data.currentPage;
   });
@@ -49,7 +48,6 @@ function selectView(buttonName: string) {
 function searchBy(search: string) {
   axios.get(`https://brapi.dev/api/${Endpoint}?token=${Token}&limit=${LimitPage}&page=${currentPage.value}&search=${search}`)
     .then(response => {
-      console.log(response)
       Funds.value = response.data.stocks;
       currentPage.value = response.data.currentPage;
   });

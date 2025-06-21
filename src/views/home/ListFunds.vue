@@ -1,7 +1,7 @@
 <template>
   <div class="loader" v-if="funds.length == 0"></div>
   <ul class="list-funds__container" v-else>
-    <li v-for="fund in funds" :key="fund.stock" class="fund-item">
+    <li v-for="fund in funds" :key="fund.stock" class="fund-item"  @click="goToFundDetail(fund.stock)">
       <div class="fund-item-header">
         <img :src="fund.logo" alt="Logo" />
         <div class="fund-item-header-details">
@@ -56,6 +56,11 @@ export default defineComponent({
     return {
       formatNumber
     };
+  },
+  methods: {
+     goToFundDetail(stock) {
+      this.$router.push({ name: 'FundDetail', params: { stock } });
+    }
   }
 });
 </script>
@@ -103,6 +108,12 @@ export default defineComponent({
     border-radius: 1rem;
     background: $color-bg-2;
     animation: show-animation .5s ease-in-out;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-1rem);
+      
+    }
 
     &-header {
       display: flex;

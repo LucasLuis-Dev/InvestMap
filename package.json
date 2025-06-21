@@ -18,8 +18,9 @@
   "dependencies": {
     "@primevue/themes": "^4.0.0-rc.2",
     "axios": "^1.7.2",
+    "chart.js": "^4.5.0",
     "pinia": "^2.1.7",
-    "primevue": "^4.0.0-rc.2",
+    "primevue": "^4.3.5",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
