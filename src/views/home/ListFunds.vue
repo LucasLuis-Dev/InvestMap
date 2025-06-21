@@ -58,7 +58,7 @@ export default defineComponent({
     };
   },
   methods: {
-     goToFundDetail(stock) {
+     goToFundDetail(stock: string) {
       this.$router.push({ name: 'FundDetail', params: { stock } });
     }
   }
