@@ -2,7 +2,7 @@
   <AppNavbar  />
   <div class="fund-detail">
      <!-- Loading -->
-    <div v-if="loading">Carregando dados...</div>
+    <AppLoader v-if="loading" />
 
     <!-- Erro -->
     <div v-if="error">{{ error }}</div>
@@ -16,36 +16,36 @@
         </figure>
         <ul class="fund-data">
           <li class="data-box">
-              <p><strong>Símbolo:</strong></p>
+              <p><strong>Símbolo</strong></p>
               <span>{{ fundData.symbol }}</span>
           </li>
           <li class="data-box">
-              <p><strong>Preço Atual:</strong></p>
+              <p><strong>Preço Atual</strong></p>
               <span>R$ {{ fundData.regularMarketPrice }}</span>
           </li>
           <li class="data-box">
-              <p><strong>Variação:</strong></p>
-              <span>({{ fundData.regularMarketChangePercent.toFixed(2) }}%)</span>
+              <p><strong>Variação</strong></p>
+              <span>{{ fundData.regularMarketChangePercent.toFixed(2) }}%</span>
           </li>
           <li class="data-box">
-              <p><strong>Volume Diário:</strong></p>
+              <p><strong>Volume Diário</strong></p>
               <span>{{ formatNumber(fundData.regularMarketVolume) }}</span>
           </li>
           <li class="data-box">
-              <p><strong>Alta do dia:</strong></p>
-              <span>R$ {{ fundData.regularMarketDayHigh }}</span>
-          </li>
-          <li class="data-box">
-              <p><strong>Baixa do dia:</strong></p>
-              <span>R$ {{ fundData.regularMarketDayLow }}</span>
-          </li>
-          <li class="data-box">
-              <p><strong>Abertura do dia:</strong></p>
+              <p><strong>Abertura do dia</strong></p>
               <span> R$ {{ fundData.regularMarketOpen }}</span>
           </li>
           <li class="data-box">
-             <p><strong>Fechamento anterior:</strong></p>
+             <p><strong>Fechamento anterior</strong></p>
              <span> R$ {{ fundData.regularMarketPreviousClose }}</span>
+          </li>
+           <li class="data-box">
+              <p><strong>Alta do dia</strong></p>
+              <span>R$ {{ fundData.regularMarketDayHigh }}</span>
+          </li>
+          <li class="data-box">
+              <p><strong>Baixa do dia</strong></p>
+              <span>R$ {{ fundData.regularMarketDayLow }}</span>
           </li>
         </ul>
       </div>
@@ -68,12 +68,14 @@ import { defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import Chart from 'primevue/chart'
 import AppNavbar from '../../layout/navbar/Navbar.vue'
+import AppLoader from '../../components/Loader.vue'
 
 export default defineComponent({
   name: 'FundDetail',
   components: {
     Chart,
-    AppNavbar
+    AppNavbar,
+    AppLoader
   },
   data() {
     return {
@@ -192,22 +194,24 @@ export default defineComponent({
 <style scoped lang="scss">
 @import '../../scss/abstracts/variables';
 
+
+
 .fund-detail {
   display: flex;
-  justify-content: space-between;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
+  justify-content: center;
   padding: 0% 8%;
   margin-top: -3%;
 
   & .fund-info {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     width: 100%;
     background-color: $color-bg-2;
-    padding: 4rem;
+    padding: 2rem;
     border-radius: 2rem;
 
      & .fund-header {
@@ -215,11 +219,12 @@ export default defineComponent({
       flex-direction: column;
       color: white;
       justify-content: space-between;
-      gap: 3rem;
+      gap: 1.5rem;
 
       & .fund-figure {
         display: flex;
         gap: 1rem;
+        align-items: center;
 
         & .fund-logo {
           height: 100%;
@@ -236,7 +241,7 @@ export default defineComponent({
       & .fund-data {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        gap: 1rem;
 
         & .data-box {
           display: flex;
@@ -263,8 +268,165 @@ export default defineComponent({
 
 .fund-chart {
   max-width: 100%;
+  height: 30rem !important;
   background-color: rgba(255, 255, 255, 0.251);
   padding: .7rem;
   border-radius: 1rem;
 }
+
+@media screen and (min-width: 1280px) {
+
+.fund-detail {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  padding: 0% 8%;
+  margin-top: -3%;
+
+  & .fund-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    width: 100%;
+    background-color: $color-bg-2;
+    padding: 4rem;
+    border-radius: 2rem;
+
+     & .fund-header {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      justify-content: center;
+      gap: 3rem;
+
+      & .fund-figure {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        & .fund-logo {
+          height: 100%;
+          border-radius: 1rem;
+        }
+
+        & .fund-name {
+          font-weight: 700;
+          font-size: 2.7rem;
+          line-height: normal;
+        }
+      }
+
+      & .fund-data {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        & .data-box {
+          display: flex;
+          flex-direction: column;
+          background-color: rgba(255, 255, 255, 0.251);
+          padding: 1rem;
+          border-radius: 1rem;
+          gap: .5rem;
+
+          & p {
+            font-size: 1.4rem;
+            font-weight: 600;
+          }
+
+          & span {
+            font-weight: bold;
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fund-chart {
+  max-width: 100%;
+  height: 100% !important;
+  background-color: rgba(255, 255, 255, 0.251);
+  padding: .7rem;
+  border-radius: 1rem;
+}
+}
+
+@media screen and (min-width: 1600px) {
+  
+.fund-detail {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  padding: 0% 8%;
+  margin-top: -3%;
+
+  & .fund-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    width: 100%;
+    background-color: $color-bg-2;
+    padding: 4rem;
+    border-radius: 2rem;
+
+     & .fund-header {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      justify-content: space-between;
+      gap: 2rem;
+
+      & .fund-figure {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+
+        & .fund-name {
+          font-weight: 700;
+          font-size: 3.5rem;
+          line-height: normal;
+        }
+      }
+
+      & .fund-data {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        & .data-box {
+          display: flex;
+          flex-direction: column;
+          background-color: rgba(255, 255, 255, 0.251);
+          padding: 1rem;
+          border-radius: 1rem;
+          gap: .5rem;
+
+          & p {
+            font-size: 1.7rem;
+            font-weight: 600;
+          }
+
+          & span {
+            font-weight: bold;
+            font-size: 2.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fund-chart {
+  max-width: 100%;
+  background-color: rgba(255, 255, 255, 0.251);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+}
+
 </style>

@@ -10,7 +10,7 @@ const selectedButton = ref('default');
 let Funds = ref([]);
 const Token = import.meta.env.VITE_API_KEY;
 
-const LimitPage: number = 20;
+const LimitPage: number = 24;
 let currentPage = ref(1);
 
 const Endpoint = 'quote/list';
@@ -98,71 +98,199 @@ function handlePageChange(page: number) {
 @import '../../scss/abstracts/variables';
 
 .main-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 6% 0%;
-
-  & .select-button__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    width: 50%;
-    background-color: #1a203b;
-    padding: 0.5rem;
-    border-radius: 50rem;
-    z-index: 3;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4%;
+    overflow: hidden;
 
-    & button {
+    & .select-button__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       width: 100%;
+      background-color: #1a203b;
+      padding: 0.5rem;
       border-radius: 50rem;
-      border: none;
-      height: 4rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      background-color: rgba(255, 255, 255, 0.251);
-      color: white;
-      cursor: pointer;
-      transition: 300ms ease;
+      z-index: 3;
 
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.427);
+      & button {
+        width: 100%;
+        border-radius: 50rem;
+        border: none;
+        height: 4rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        background-color: rgba(255, 255, 255, 0.251);
+        color: white;
+        cursor: pointer;
+        transition: 300ms ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.427);
+        }
+
+        &.active {
+          background: $color-highlight-2;
+          color: white;
+        }
       }
+    }
 
-      &.active {
-        background: $color-highlight;
-        color: $color-bg;
+    & .section-informations {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      gap: 3.5rem;
+
+      & .title-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        & h2 {
+          font-size: 3rem;
+          font-weight: 700;
+          line-height: 4rem;
+          width: 100%;
+        }
+
+        & p {
+          width: 100%;
+          font-size: 1.5rem;
+        }
       }
     }
   }
 
-  & .section-informations {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    gap: 3.5rem;
 
-    & .title-box {
+@media screen and (min-width: 1200px) {
+    
+  .main-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 6% 0%;
+
+    & .select-button__container {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      width: 100%;
+      width: 50%;
+      background-color: #1a203b;
+      padding: 0.5rem;
+      border-radius: 50rem;
+      z-index: 3;
 
-      & h2 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 5rem;
-        width: 45%;
+      & button {
+        width: 100%;
+        border-radius: 50rem;
+        border: none;
+        height: 4rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        background-color: rgba(255, 255, 255, 0.251);
+        color: white;
+        cursor: pointer;
+        transition: 300ms ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.427);
+        }
+
+        &.active {
+          background: $color-highlight-2;
+          color: white;
+        }
       }
+    }
 
-      & p {
-        width: 40%;
+    & .section-informations {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      gap: 3.5rem;
+
+      & .title-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        & h2 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          line-height: 5rem;
+          width: 45%;
+        }
+
+        & p {
+          width: 40%;
+        }
       }
     }
   }
 }
+
+@media screen and (min-width: 1600px) {
+  
+  .main-wrapper {
+
+    & .select-button__container {
+
+      & button {
+        width: 100%;
+        border-radius: 50rem;
+        border: none;
+        height: 4rem;
+        font-size: 2rem;
+        font-weight: 600;
+        background-color: rgba(255, 255, 255, 0.251);
+        color: white;
+        cursor: pointer;
+        transition: 300ms ease;
+      }
+    }
+
+    & .section-informations {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      gap: 3.5rem;
+
+      & .title-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        & h2 {
+          font-size: 5rem;
+          font-weight: 700;
+          line-height: 6rem;
+          width: 48%;
+        }
+
+        & p {
+          width: 40%;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
 </style>

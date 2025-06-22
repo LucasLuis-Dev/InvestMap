@@ -27,15 +27,17 @@ export default defineComponent({
 
 <template>
     <nav>
-        <img alt="InvestMap logo" class="logo" src="@/assets/images/logo.png" />
+        <a href="/">
+          <img alt="InvestMap logo" class="logo" src="@/assets/images/logo.svg" />
+        </a>
 
-        <input type="text" v-model="search" @keyup.enter="sendSearch()" class="input-search" placeholder="Pesquise por um Fundo">
+        <input type="text" v-model="search" @keyup.enter="sendSearch()" class="input-search" placeholder="Pesquise por um fundo">
 
-        <ul class="navbar-list">
+        <!-- <ul class="navbar-list">
             <li><a class="navbar-list-link" href="#acoes">Ações</a></li>
             <li><a class="navbar-list-link" href="#FIIs">FIIs</a></li>
             <li><a class="navbar-list-link" href="#Contato">Contato</a></li>
-        </ul>
+        </ul> -->
 
     </nav>
 </template>
@@ -45,19 +47,66 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1% 8%;
+  padding: 4%;
   padding-bottom: 2%;
   line-height: 1.5;
   height: fit-content;
   width: 100vw;
   z-index: 2;
 
+  & a:hover {
+    background: none;
+  }
+
   & .logo {
-    width: 12%;
+    width: 15rem;
   }
 
   & .input-search {
-  
+    width: 50%;
+    border-radius: 5rem;
+    border: none;
+    padding: 1rem;
+    padding-left: 3.5rem;
+    background-image: url('../../assets/images/magnifying-glass-solid.svg');
+    background-color: rgba(255, 255, 255, 0.179);
+    background-repeat: no-repeat;
+    background-size: 7%;
+    background-position-y: center;
+    background-position-x: 6%;
+    color: white;
+    font-size: 1.4rem;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5% 8%;
+  padding-bottom: 2%;
+  line-height: 1.5;
+  height: fit-content;
+  width: 100vw;
+  z-index: 2;
+
+  & a:hover {
+    background: none;
+  }
+
+  & .logo {
+    width: 23rem;
+  }
+
+  & .input-search {
+    width: 30%;
     border-radius: 5rem;
     border: none;
     padding: 1rem;
@@ -65,9 +114,9 @@ nav {
     background-image: url('../../assets/images/magnifying-glass-solid.svg');
     background-color: rgba(255, 255, 255, 0.179);
     background-repeat: no-repeat;
-    background-size: 8%;
+    background-size: 4%;
     background-position-y: center;
-    background-position-x: 6%;
+    background-position-x: 4%;
     color: white;
     font-size: 1.7rem;
 
@@ -91,6 +140,8 @@ nav {
     }
   }
 }
+}
+
 </style>
 
 

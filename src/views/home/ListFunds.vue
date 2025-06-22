@@ -1,5 +1,6 @@
 <template>
-  <div class="loader" v-if="funds.length == 0"></div>
+  <AppLoader v-if="funds.length == 0" />
+
   <ul class="list-funds__container" v-else>
     <li v-for="fund in funds" :key="fund.stock" class="fund-item"  @click="goToFundDetail(fund.stock)">
       <div class="fund-item-header">
@@ -27,6 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
+import AppLoader from '../../components/Loader.vue';
 
 interface Fund {
   stock: string;
@@ -71,23 +73,119 @@ export default defineComponent({
 @import '../../scss/abstracts/variables';
 @import '../../scss/base/animations';
 
-.loader {
-  width: 45px;
-  aspect-ratio: 1;
-  --c:no-repeat linear-gradient(#000 0 0);
-  background: var(--c), var(--c), var(--c);
-  animation: 
-    l15-1 1s infinite,
-    l15-2 1s infinite;
+.list-funds__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  align-items: center;
+  padding: 0% 0%;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+  gap: 1.5rem;
+
+  & .fund-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1.5rem;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+    background: $color-bg-2;
+    animation: show-animation .5s ease-in-out;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-1rem);
+      
+    }
+
+    &-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+
+      & img {
+        border-radius: 1rem;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & h3 {
+          font-weight: 700;
+          background: rgba(255, 255, 255, 0.251);
+          width: fit-content;
+          padding: .1rem 1rem;
+          border-radius: .5rem;
+        }
+
+        & p {
+          text-align: left;
+          word-break: break-word;
+        }
+      }
+    }
+
+    &-pricing {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      & .fund-price {
+        color: $color-highlight;
+        background-color: rgba(255, 255, 255, 0.142);
+        padding: 0.6rem;
+        border-radius: 1rem;
+        width: 100%;
+        font-weight: bold;
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      &-variation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        width: 100%;
+        font-weight: bold;
+        font-size: 1.8rem;
+
+        &.up-variation {
+          color: #00e509;
+          background-color: rgba(0, 255, 0, 0.142);
+        }
+
+        &.down-variation {
+          color: red;
+          background-color: rgba(255, 0, 0, 0.142);
+        }
+
+        &.zero-variation {
+          color: white;
+          background-color: rgba(255, 255, 255, 0.142);
+        }
+
+        & .variation-svg {
+          width: 2rem;
+        }
+      }
+    }
+  }
 }
-@keyframes l15-1 {
- 0%,100% {background-size:20% 100%}
- 33%,66% {background-size:20% 40%}
-}
-@keyframes l15-2 {
- 0%,33%   {background-position: 0    0,50% 100%,100% 100%}
- 66%,100% {background-position: 100% 0,0   100%,50%  100%}
-}
+
+@media screen and (min-width: 1200px) {
 
 .list-funds__container {
   display: grid;
@@ -151,6 +249,7 @@ export default defineComponent({
 
     &-pricing {
       display: flex;
+      flex-direction: row;
       gap: 1rem;
       align-items: center;
       justify-content: space-between;
@@ -161,6 +260,7 @@ export default defineComponent({
         padding: 0.6rem;
         border-radius: 1rem;
         width: 100%;
+        font-size: 1.65rem;
       }
 
       &-variation {
@@ -171,6 +271,7 @@ export default defineComponent({
         padding: 0.5rem;
         border-radius: 1rem;
         width: 100%;
+      font-size: 1.65rem;
 
         &.up-variation {
           color: #00e509;
@@ -194,4 +295,6 @@ export default defineComponent({
     }
   }
 }
+}
+
 </style>

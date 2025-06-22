@@ -70,6 +70,52 @@ export default defineComponent({
 <style lang="scss">
 @import '../scss/abstracts/variables';
 
+
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  background-color:#1a203b;
+  padding: .5rem;
+  gap: 1rem;
+  border-radius: 50rem;
+  width: 100%;
+
+  & li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.251);
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    border-radius: 50rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 200ms;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.427);
+      }
+
+    &.current-page {
+      background-color: $color-highlight;
+      color: $color-bg;
+      font-weight: 600;
+    }
+
+    & .icon-navigation {
+      display: flex;
+      width: 1rem;
+      fill: white;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  
 .pagination {
   display: flex;
   justify-content: space-between;
@@ -111,4 +157,6 @@ export default defineComponent({
     }
   }
 }
+}
+
 </style>
