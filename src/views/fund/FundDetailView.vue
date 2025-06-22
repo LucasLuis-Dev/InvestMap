@@ -202,7 +202,7 @@ export default defineComponent({
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  padding: 0% 8%;
+  padding: 12% 4%;
   margin-top: -3%;
 
   & .fund-info {
@@ -211,7 +211,7 @@ export default defineComponent({
     gap: 1.5rem;
     width: 100%;
     background-color: $color-bg-2;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 2rem;
 
      & .fund-header {
@@ -233,7 +233,7 @@ export default defineComponent({
 
         & .fund-name {
           font-weight: 700;
-          font-size: 2.7rem;
+          font-size: 2rem;
           line-height: normal;
         }
       }
@@ -252,7 +252,7 @@ export default defineComponent({
           gap: .5rem;
 
           & p {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
           }
 
