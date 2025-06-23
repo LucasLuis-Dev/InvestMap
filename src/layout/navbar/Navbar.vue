@@ -54,6 +54,10 @@ nav {
   width: 100vw;
   z-index: 2;
 
+  & a {
+    padding: 0;
+  }
+
   & a:hover {
     background: none;
   }
@@ -63,7 +67,7 @@ nav {
   }
 
   & .input-search {
-    width: 50%;
+    width: 45%;
     border-radius: 5rem;
     border: none;
     padding: 1rem;
@@ -71,9 +75,9 @@ nav {
     background-image: url('../../assets/images/magnifying-glass-solid.svg');
     background-color: rgba(255, 255, 255, 0.179);
     background-repeat: no-repeat;
-    background-size: 7%;
+    background-size: 10%;
     background-position-y: center;
-    background-position-x: 6%;
+    background-position-x: 8%;
     color: white;
     font-size: 1.4rem;
 
@@ -85,7 +89,65 @@ nav {
   }
 }
 
+
 @media screen and (min-width: 1200px) {
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5% 8%;
+  padding-bottom: 2%;
+  line-height: 1.5;
+  height: fit-content;
+  width: 100vw;
+  z-index: 2;
+
+  & a:hover {
+    background: none;
+  }
+
+  & .logo {
+    width: 23rem;
+  }
+
+  & .input-search {
+    width: 25%;
+    border-radius: 5rem;
+    border: none;
+    padding: 1rem;
+    padding-left: 4.5rem;
+    background-image: url('../../assets/images/magnifying-glass-solid.svg');
+    background-color: rgba(255, 255, 255, 0.179);
+    background-repeat: no-repeat;
+    background-size: 6%;
+    background-position-y: center;
+    background-position-x: 4%;
+    color: white;
+    font-size: 1.6rem;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+  }
+
+  & .navbar-list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    color: white;
+
+    &-link {
+      color: white;
+      font-weight: 500;
+    }
+  }
+}
+}
+
+@media screen and (min-width: 1600px) {
 nav {
   display: flex;
   justify-content: space-between;
@@ -109,16 +171,16 @@ nav {
     width: 30%;
     border-radius: 5rem;
     border: none;
-    padding: 1rem;
-    padding-left: 5rem;
+    padding: 2rem;
+    padding-left: 5.5rem;
     background-image: url('../../assets/images/magnifying-glass-solid.svg');
     background-color: rgba(255, 255, 255, 0.179);
     background-repeat: no-repeat;
-    background-size: 4%;
+    background-size: 5%;
     background-position-y: center;
     background-position-x: 4%;
     color: white;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
 
     &:focus {
       border: none;

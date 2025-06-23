@@ -8,7 +8,12 @@
   <AppFooter />
 </template>
 
-<!-- <style scoped lang="scss">
-@import './assets/base.scss';
-</style> -->
+<style scoped lang="scss">
+// @import './assets/base.scss';
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+</style>
 

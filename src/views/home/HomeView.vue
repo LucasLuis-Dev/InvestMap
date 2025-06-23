@@ -63,7 +63,55 @@ function handlePageChange(page: number) {
   <AppNavbar @search-event="searchBy" />
   <AppHeader />
   <main class="main-wrapper">
-    <section class="section-informations">
+
+    <div class="section-informations">
+      <div class="title-box">
+        <h2>Desvende o Mercado Financeiro</h2>
+        <p>Acesse dados essenciais e ferramentas poderosas. Com o InvestView, você está sempre à frente nas suas decisões de investimento.</p>
+      </div>
+
+      <div class="info-container">
+        <div class="col">
+          <div class="info-box">
+            <figure>
+              <img src="@/assets/images/lupa.svg" alt="">
+            </figure>
+            <span>Acompanhamento Detalhado</span>
+            <p>Visualize em tempo real o desempenho de suas ações, FIIs e BDRs, com métricas claras e indicadores essenciais.</p>
+          </div>
+          <div class="info-box">
+            <figure>
+              <img src="@/assets/images/graficos.svg" alt="">
+            </figure>
+            <span>Gráficos Dinâmicos</span>
+            <p>Explore gráficos interativos e personalizados para identificar tendências, suportes e resistências em seus ativos favoritos, direto na web.</p>
+          </div>
+        </div>
+        <div class="col spotlight">
+          <span>Plataforma Online</span>
+          <p>Acesse o mercado de qualquer dispositivo conectado à internet. Uma experiência fluida e intuitiva, sem downloads necessários.</p>
+          <img src="@/assets/images/spotlight.svg" alt="">
+        </div>
+        <div class="col">
+          <div class="info-box">
+              <figure>
+              <img src="@/assets/images/docs.svg" alt="">
+            </figure>
+            <span>Análises Fundamentais</span>
+            <p>Acesse informações detalhadas sobre empresas, FIIs e BDRs, para embasar suas decisões de investimento de forma estratégica, a qualquer momento.</p>
+          </div>
+          <div class="info-box">
+            <figure>
+              <img src="@/assets/images/relogio.svg" alt="">
+            </figure>
+            <span>Dados em Tempo Real</span>
+            <p>Receba cotações e informações atualizadas instantaneamente na sua tela, garantindo que você nunca perca um movimento importante do mercado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-informations" id="fundsList">
       <div class="title-box">
         <h2>Explore Informações Exclusivas do Mercado de Ações</h2>
         <p>Descubra as tendências e os insights mais recentes do mercado de ações em um único lugar. Nossa plataforma oferece acesso atualizado a dados críticos para investidores e entusiastas do mercado.</p>
@@ -165,6 +213,82 @@ function handlePageChange(page: number) {
           font-size: 1.5rem;
         }
       }
+
+       & .info-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0% 0%;
+        padding-bottom: 12%;
+        gap: 2rem;
+        width: 100%;
+
+        & .col {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          width: 100%;
+
+          &.spotlight {
+            background-color: $color-highlight-2;
+            padding: 3rem;
+            border-radius: 3rem;
+            gap: 1rem;
+            padding-bottom: 0rem;
+
+            & span {
+              font-weight: 700;
+              font-size: 1.7rem;
+              text-align: left;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.4rem;
+            }
+
+            & img {
+              margin-top: 2rem;
+              width: 100%;
+            }
+          }
+
+          & .info-box {
+            background-color: $color-bg-2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1rem;
+            border-radius: 3rem;
+            padding: 2.5rem;
+            height: 50%;
+            width: 100%;
+
+            & figure {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1.5rem;
+              border-radius: 1.5rem;
+              background-color: $color-highlight-2;
+
+              & img {
+                width: 3rem;
+              }
+            }
+
+            & span {
+              font-weight: 700;
+              font-size: 1.7rem;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -237,6 +361,78 @@ function handlePageChange(page: number) {
           width: 40%;
         }
       }
+
+      & .info-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 1% 8%;
+        padding-bottom: 4%;
+        gap: 2rem;
+
+        & .col {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+
+          &.spotlight {
+            background-color: $color-highlight-2;
+            padding: 3rem;
+            border-radius: 3rem;
+            gap: 1rem;
+            padding-bottom: 0rem;
+
+            & span {
+              font-weight: 700;
+              font-size: 1.7rem;
+              text-align: left;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.4rem;
+            }
+
+            & img {
+              margin-top: 2rem;
+            }
+          }
+
+          & .info-box {
+            background-color: $color-bg-2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1rem;
+            border-radius: 3rem;
+            padding: 2.5rem;
+            height: 50%;
+
+            & figure {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1.5rem;
+              border-radius: 1.5rem;
+              background-color: $color-highlight-2;
+
+              & img {
+                width: 3.5rem;
+              }
+            }
+
+            & span {
+              font-weight: 700;
+              font-size: 1.7rem;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -287,6 +483,78 @@ function handlePageChange(page: number) {
         & p {
           width: 40%;
           font-size: 2rem;
+        }
+      }
+
+      & .info-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 1% 8%;
+        padding-bottom: 4%;
+        gap: 2rem;
+
+        & .col {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+
+          &.spotlight {
+            background-color: $color-highlight-2;
+            padding: 3rem;
+            border-radius: 3rem;
+            gap: 1rem;
+            padding-bottom: 0rem;
+
+            & span {
+              font-weight: 700;
+              font-size: 2.4rem;
+              text-align: left;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.8rem;
+            }
+
+            & img {
+              margin-top: 2rem;
+            }
+          }
+
+          & .info-box {
+            background-color: $color-bg-2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1.5rem;
+            border-radius: 3rem;
+            padding: 3rem;
+            height: 50%;
+
+            & figure {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1.5rem;
+              border-radius: 1.5rem;
+              background-color: $color-highlight-2;
+
+              & img {
+                width: 4.5rem;
+              }
+            }
+
+            & span {
+              font-weight: 700;
+              font-size: 2.4rem;
+            }
+
+            & p {
+              text-align: left;
+              font-size: 1.8rem;
+            }
+          }
         }
       }
     }

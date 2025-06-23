@@ -10,6 +10,9 @@
             <p>
                 Simplificamos o acesso aos dados essenciais para que você possa focar no que realmente importa: seus investimentos.
             </p>
+            <a href="#fundsList">
+                Explorar Mercado
+            </a>
         </div>
 
          <figure>
@@ -22,21 +25,16 @@
 
 <style lang="scss">
 @import '../../scss/abstracts/variables';
-    .bg {
+
+
+        .bg {
         position: absolute;
         background: url('../../assets/images/bg.svg') no-repeat;
         width: 100%;
         height: 100%;
     }
 
-    .bg-2 {
-        position: absolute;
-        background: url('../../assets/images/bg-2.svg') no-repeat;
-        right: -60%;
-        bottom: -20%;
-        width: 100%;
-        height: 120%;
-    }
+    
      header {
         display: flex;
         flex-direction: column;
@@ -52,9 +50,9 @@
         & .header-informations {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            gap: 1rem;
+            gap: 2rem;
             width: 100%;
 
             &-title {
@@ -65,6 +63,26 @@
 
                 & span {
                     font-weight: 700;
+                }
+            }
+
+            
+            & a {
+                border: none;
+                border-radius: 5rem;
+                background-color: $color-highlight-2;
+                color: white;
+                font-size: 1.3rem;
+                text-transform: uppercase;
+                font-weight: 800;
+                padding: 1.5rem 3.5rem;
+                transition: all 200ms ease-in-out;
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
+
+                &:hover {
+                    background-color: #031FB4;
                 }
             }
 
@@ -80,6 +98,23 @@
     }
 
     @media screen and (min-width: 1280px) {
+
+        .bg {
+        position: absolute;
+        background: url('../../assets/images/bg.svg') no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bg-2 {
+        position: absolute;
+        background: url('../../assets/images/bg-2.svg') no-repeat;
+        right: -60%;
+        bottom: -20%;
+        width: 100%;
+        height: 120%;
+    }
+
         header {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -93,9 +128,9 @@
         & .header-informations {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            gap: 1rem;
+            gap: 2rem;
             width: 80%;
 
             &-title {
@@ -112,6 +147,24 @@
 
              & p {
                 text-align: left;
+            }
+
+            & a {
+                border: none;
+                border-radius: 5rem;
+                background-color: $color-highlight-2;
+                color: white;
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                font-weight: 800;
+                padding: 2rem 4rem;
+                transition: all 200ms ease-in-out;
+                cursor: pointer;
+                width: fit-content;
+
+                &:hover {
+                    background-color: #031FB4;
+                }
             }
 
         }
@@ -132,9 +185,9 @@
             & .header-informations {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
-                gap: 2rem;
+                gap: 2.5rem;
                 width: 80%;
 
                 &-title {
@@ -145,8 +198,15 @@
                 }
 
                 & p {
-                    font-size: 2.4rem;
+                    font-size: 2.2rem;
+                    line-height: 3.5rem;
                 }
+
+                 & a {
+               
+                  font-size: 2rem;
+                
+                 }
 
             }
 
