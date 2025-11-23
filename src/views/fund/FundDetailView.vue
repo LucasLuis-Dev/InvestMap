@@ -103,14 +103,14 @@ export default defineComponent({
 
       try {
         const token = import.meta.env.VITE_API_KEY;
-        const url = `https://brapi.dev/api/quote/${this.stock}?range=5d&interval=1d&fundamental=true&modules=summaryProfile`
+        const url = `https://brapi.dev/api/quote/${this.stock}?range=5d&interval=1d`
 
         const response = await fetch(url, {
           headers: {
             'Authorization': `Bearer ${token}`  
           }
         })
-
+        
         const data = await response.json()
 
         if (data.results && data.results.length > 0) {

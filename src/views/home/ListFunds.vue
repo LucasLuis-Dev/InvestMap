@@ -88,11 +88,13 @@ export default defineComponent({
     grid-template-columns: 1fr 1fr;
     width: 100%;
     gap: 1.5rem;
-    padding: 2rem 2rem;
+    padding: 2rem;
     border-radius: 1rem;
     background: $color-bg-2;
     animation: show-animation .5s ease-in-out;
     transition: all 200ms ease-in-out;
+    height: 100%;
+    justify-content: flex-end;
     &:hover {
       cursor: pointer;
       transform: translateY(-1rem);
@@ -103,12 +105,14 @@ export default defineComponent({
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      flex-direction: column;
       gap: 1rem;
       width: 100%;
 
       & img {
         border-radius: 1rem;
-        height: 100%;
+        height: 6rem;
+        width: 6rem;
         object-fit: cover;
       }
 
@@ -116,6 +120,8 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
 
         & h3 {
           font-weight: 700;
@@ -126,7 +132,7 @@ export default defineComponent({
         }
 
         & p {
-          text-align: left;
+          text-align: center;
           word-break: break-word;
         }
       }
@@ -141,14 +147,18 @@ export default defineComponent({
       width: 100%;
 
       & .fund-price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: $color-highlight;
         background-color: rgba(255, 255, 255, 0.142);
         padding: 0.6rem;
         border-radius: 1rem;
         width: 100%;
         font-weight: bold;
-        font-size: 1.8rem;
+        font-size: 2rem;
         text-align: center;
+        height: 100%;
       }
 
       &-variation {
@@ -160,7 +170,8 @@ export default defineComponent({
         border-radius: 1rem;
         width: 100%;
         font-weight: bold;
-        font-size: 1.8rem;
+        font-size: 2rem;
+        height: 100%;
 
         &.up-variation {
           color: #00e509;
@@ -202,7 +213,7 @@ export default defineComponent({
     flex-direction: column;
     width: 100%;
     gap: 1rem;
-    padding: 2rem 3rem;
+    padding: 2rem;
     border-radius: 1rem;
     background: $color-bg-2;
     animation: show-animation .5s ease-in-out;
@@ -240,8 +251,7 @@ export default defineComponent({
         }
 
         & p {
-          text-align: left;
-          width: max-content;
+          text-align: center;
           word-break: break-word;
         }
       }
